@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forge Your Legacy — Backyard Ultra Roman Ranks</title>
-    <meta name="description" content="Rise through the ranks of the Backyard Ultra. From Legionnaire to Princeps Civitatis — earn your title by going the distance.">
+    <meta name="description"
+        content="Rise through the ranks of the Backyard Ultra. From Legionnaire to Princeps Civitatis — earn your title by going the distance.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         /* ============================================
            CSS CUSTOM PROPERTIES
@@ -34,7 +38,9 @@
         /* ============================================
            RESET & BASE
            ============================================ */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -457,15 +463,6 @@
             min-width: 0;
         }
 
-        .rank-number {
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            margin-bottom: 8px;
-        }
-
         .rank-name {
             font-family: var(--font-display);
             font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -577,6 +574,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -584,13 +582,25 @@
         }
 
         @keyframes bounceDown {
-            0%, 100% { transform: rotate(45deg) translateY(0); }
-            50% { transform: rotate(45deg) translateY(6px); }
+
+            0%,
+            100% {
+                transform: rotate(45deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(45deg) translateY(6px);
+            }
         }
 
         @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
         }
 
         /* ============================================
@@ -676,6 +686,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Particle Background -->
@@ -686,7 +697,7 @@
          ========================================== -->
     <section class="hero" id="hero">
         <img class="hero-logo" src="Backyard Logo.png" alt="Big's Backyard Ultra Logo">
-        <p class="hero-subtitle-top">Backyard Ultra</p>
+        <p class="hero-subtitle-top">Big's Backyard Ultra</p>
         <h1 class="hero-title">Forge Your Legacy</h1>
         <p class="hero-tagline">Rise through the ranks. Earn your title. Go the distance.</p>
         <div class="hero-ornament-bottom"></div>
@@ -851,7 +862,6 @@
                             <img class="rank-image" src="${rank.image}" alt="${rank.rank} insignia" loading="lazy">
                         </div>
                         <div class="rank-info">
-                            <div class="rank-number">Rank ${String(i + 1).padStart(2, '0')}</div>
                             <h2 class="rank-name">${rank.rank}</h2>
                             <div class="rank-stats">
                                 <div class="rank-stat">
@@ -1038,4 +1048,5 @@
         });
     </script>
 </body>
+
 </html>
