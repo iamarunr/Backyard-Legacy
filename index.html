@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forge Your Legacy — Backyard Ultra Roman Ranks</title>
     <meta name="description"
-        content="Rise through the ranks of the Backyard Ultra. From Legionnaire to Princeps Civitatis — earn your title by going the distance.">
+        content="Rise through the ranks of the Backyard Ultra. From Tiro to Princeps Civitatis — earn your title by going the distance.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -220,10 +220,11 @@
         .timeline {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 8px;
             position: relative;
             min-width: 900px;
+            width: max-content;
             padding: 0 10px;
         }
 
@@ -456,6 +457,27 @@
         .rank-card:hover .rank-image {
             transform: scale(1.05);
             filter: drop-shadow(0 4px 30px rgba(201, 168, 76, 0.2));
+        }
+
+        /* Frame the insignia within the supplied Tiro presentation artwork. */
+        .tiro-artwork {
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+        }
+
+        .tiro-artwork img {
+            position: absolute;
+            width: 265.125%;
+            height: 147.977%;
+            max-width: none;
+            left: -11.753%;
+            top: -22.158%;
+            object-fit: fill;
+        }
+
+        .rank-card:hover .tiro-artwork .rank-image {
+            transform: none;
         }
 
         .rank-info {
@@ -739,6 +761,15 @@
         // ============================================
         const ranks = [
             {
+                id: 'tiro',
+                rank: 'Tiro',
+                hours: '1–14',
+                subtitle: 'The New Recruit',
+                description: "Every journey begins with a single step. You have just taken your first on the long march of the legion. Welcome to the ranks: train hard, and earn your place among the veterans.",
+                image: '1-14 Tiro.jpg',
+                artworkClass: 'tiro-artwork'
+            },
+            {
                 id: 'legionnaire',
                 rank: 'Legionnaire',
                 hours: 15,
@@ -839,9 +870,9 @@
                 <div class="timeline-item" data-target="${rank.id}" role="button" tabindex="0" aria-label="Jump to ${rank.rank}">
                     <div class="timeline-stats-top">
                         <div class="timeline-hours">${rank.hours}h</div>
-                        <div class="timeline-distance">${rank.distanceMi}</div>
+                        <div class="timeline-distance">${rank.distanceMi || 'Entry rank'}</div>
                     </div>
-                    <div class="timeline-thumb">
+                    <div class="timeline-thumb ${rank.artworkClass || ''}">
                         <img src="${rank.image}" alt="${rank.rank} insignia" loading="lazy">
                     </div>
                     <div class="timeline-dot"></div>
@@ -858,7 +889,7 @@
             container.innerHTML = ranks.map((rank, i) => `
                 <section class="rank-section ${i === ranks.length - 1 ? 'final-rank' : ''}" id="${rank.id}">
                     <div class="rank-card">
-                        <div class="rank-image-wrapper">
+                        <div class="rank-image-wrapper ${rank.artworkClass || ''}">
                             <img class="rank-image" src="${rank.image}" alt="${rank.rank} insignia" loading="lazy">
                         </div>
                         <div class="rank-info">
@@ -868,10 +899,10 @@
                                     <span class="rank-stat-value" data-count="${rank.hours}">${rank.hours}h</span>
                                     <span class="rank-stat-label">Hours</span>
                                 </div>
-                                <div class="rank-stat">
+                                ${rank.distanceMi ? `<div class="rank-stat">
                                     <span class="rank-stat-value">${rank.distanceMi}</span>
                                     <span class="rank-stat-label">Distance</span>
-                                </div>
+                                </div>` : ''}
                             </div>
                             <div class="rank-divider"></div>
                             <p class="rank-subtitle">${rank.subtitle}</p>
